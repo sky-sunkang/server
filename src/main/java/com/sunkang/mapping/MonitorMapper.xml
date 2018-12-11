@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sunkang.IDao.MonitorMapper">
+  <resultMap id="BaseResultMap" type="com.sunkang.entity.Monitor">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="cpu" jdbcType="DOUBLE" property="cpu" />
+    <result column="memery_total" jdbcType="INTEGER" property="memeryTotal" />
+    <result column="memery_used" jdbcType="INTEGER" property="memeryUsed" />
+    <result column="memery_free" jdbcType="INTEGER" property="memeryFree" />
+    <result column="memery_buff" jdbcType="INTEGER" property="memeryBuff" />
+    <result column="disk_used" jdbcType="INTEGER" property="diskUsed" />
+    <result column="disk_totalSpace" jdbcType="INTEGER" property="diskTotalspace" />
+    <result column="In_Speed" jdbcType="INTEGER" property="inSpeed" />
+    <result column="Out_Speed" jdbcType="INTEGER" property="outSpeed" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, cpu, memery_total, memery_used, memery_free, memery_buff, disk_used, disk_totalSpace, 
+    In_Speed, Out_Speed, create_date
+  </sql>
+
+  <select id="selectMonitor" resultMap="BaseResultMap">
+    select *from (select
+    <include refid="Base_Column_List" />
+    from monitor m order by m.create_date desc ) m1 limit 100
+  </select>
+
+</mapper>
