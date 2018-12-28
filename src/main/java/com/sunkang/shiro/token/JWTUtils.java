@@ -23,8 +23,8 @@ public class JWTUtils {
     public static String createJwtToken(String username,String password,String tokenType){
         // expire time
         Calendar nowTime = Calendar.getInstance();
-        //有10天有效期
-        nowTime.add(Calendar.MINUTE, 2);
+        //有30分钟有效期
+        nowTime.add(Calendar.MILLISECOND, 30*60*1000);
         Date expiresDate = nowTime.getTime();
         Claims claims = Jwts.claims();
         claims.put("username",username);

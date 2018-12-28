@@ -2,6 +2,7 @@ package com.sunkang.controller;
 
 import com.sunkang.IDao.MonitorMapper;
 import com.sunkang.entity.Monitor;
+import com.sunkang.service.RedisService;
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -19,6 +21,7 @@ public class MonitorController {
 
     @Autowired
     private MonitorMapper monitorMapper;
+
 
     /**
      * 自己的监控
